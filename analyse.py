@@ -1,5 +1,8 @@
 def analyse(a, b):
-    """Analyses the input and compare it with the solution and returns a clue in form of tuplewhich indicating how many digits are correctly guessed and how many of them are also in correct positions.
+    """Analyses the input and compare it with the solution 
+    and returns a clue in form of tuple which indicating
+    how many digits are correctly guessed and how many of them
+    are also in correct positions.
 
     :param a: the number to be compared with the lock code, e.g: "555" (required)
     :type a: str
