@@ -6,9 +6,37 @@ def generate_puzzle():
     return f'{solution:03d}'
 
 
-def human_readable_clue(correct, misplaced):
-    return (correct, misplaced)
+def human_readable_clue(analyse_result):
+    """Convert correct, misplaced number to a human readable clue
+    
+    There are 9 possible tuples:
+    (0, 1), (0, 2), (0, 3)
+    (1, 0), (1, 1), (1, 2)
+    (2, 0), (2, 1)
+    (3, 0) -> this one is caught earlier, no need to implement it.
+    """
+    if analyse_result == (0, 1):
+        return "One digit is correct but wrongly placed"
+    elif analyse_result == (0, 2):
+        return "Two digits are correct but wrongly placed"
+    elif analyse_result == (0, 3):
+        return "All digits are correct but wrongly placed"
 
+    elif analyse_result == (1, 0):
+        return "One digit is correct and well placed"
+    elif analyse_result == (1, 1):
+        return "Two digits are correct but one of them is wrongly placed"
+    elif analyse_result == (1, 2):
+        return "All digits are correct but two of them are wrongly placed"
+
+    elif analyse_result == (2, 0):
+        return "Two digits are correct and well placed"
+    elif analyse_result == (2, 1):
+        return "All digits are correct but one of them is wrongly placed"
+   
+    else:
+        return "N/A"
+    
 
 if __name__ == "__main__":
     init_message = """
@@ -35,7 +63,7 @@ if __name__ == "__main__":
             print("Congrats, you have opened the box")
             break
         else:
-            clue_message = human_readable_clue(correct, misplaced)
+            clue_message = human_readable_clue((correct, misplaced))
             print(clue_message)
         
         n_attempt += 1
