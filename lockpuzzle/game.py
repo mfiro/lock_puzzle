@@ -1,7 +1,7 @@
 import random
 from analyse import analyse
 
-def generate_puzzle():
+def generate_code():
     solution = random.randint(0,999)
     return f'{solution:03d}'
 
@@ -42,7 +42,7 @@ def human_readable_clue(analyse_result):
 
 def game():
 
-    solution = generate_puzzle()
+    solution = generate_code()
     max_attempt = 5
     n_attempt = 1
 
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     print(init_message)
     print(f"{'-'*100}")
 
-    solution = generate_puzzle()
+    solution = generate_code()
 
     play_game = True
     while play_game:
