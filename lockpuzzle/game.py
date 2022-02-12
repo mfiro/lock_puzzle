@@ -1,16 +1,16 @@
-from utils import analyse, human_readable_clue, generate_code
+from utils import analyse, human_readable_clue, generate_secret
 
 
 def game():
-    solution = generate_code()
-    max_attempt = 5
+    secret = generate_secret()
+    max_attempt = 7
     n_attempt = 1
 
     while n_attempt <= max_attempt:
         guess = input(f"\n Attempt {n_attempt} What is your guess? -> ")
 
         try:
-            correct, misplaced = analyse(guess, solution)
+            correct, misplaced = analyse(guess, secret)
         except Exception as e:
             print(e.message)
             continue
@@ -25,7 +25,7 @@ def game():
         n_attempt += 1
 
     else:
-        print(f"Failed! -> The lock code was {solution}")
+        print(f"Failed! -> The lock code was {secret}")
 
 
 if __name__ == "__main__":
@@ -39,8 +39,6 @@ if __name__ == "__main__":
     """
     print(init_message)
     print(f"{'-'*100}")
-
-    solution = generate_code()
 
     play_game = True
     while play_game:
