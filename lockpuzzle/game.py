@@ -48,18 +48,3 @@ if __name__ == "__main__":
         response = input("Play again? [Y/n] ")
         if response.lower() != 'y':
             play_game = False
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
