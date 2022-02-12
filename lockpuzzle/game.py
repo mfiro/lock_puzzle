@@ -1,4 +1,4 @@
-from analyse import analyse, human_readable_clue, generate_code
+from utils import analyse, human_readable_clue, generate_code
 
 
 def game():
@@ -11,7 +11,7 @@ def game():
         correct, misplaced = analyse(guess, solution)
 
         if (correct, misplaced) == (3, 0):
-            print("Congrats, you have opened the box")
+            print("Congrats! you have opened the box ^--^")
             break
         else:
             clue_message = human_readable_clue((correct, misplaced))
