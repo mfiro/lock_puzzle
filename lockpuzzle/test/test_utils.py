@@ -1,4 +1,4 @@
-from analyse import analyse
+from lockpuzzle.utils import analyse
 
 def test_analyse():
     assert analyse("345", "456") == (0,2)
