@@ -8,7 +8,12 @@ def game():
 
     while n_attempt <= max_attempt:
         guess = input(f"\n Attempt {n_attempt} What is your guess? -> ")
-        correct, misplaced = analyse(guess, solution)
+
+        try:
+            correct, misplaced = analyse(guess, solution)
+        except Exception as e:
+            print(e.message)
+            continue
 
         if (correct, misplaced) == (3, 0):
             print("Congrats! you have opened the box ^--^")

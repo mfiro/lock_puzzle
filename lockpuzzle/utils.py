@@ -1,4 +1,5 @@
 import random
+from exceptions import InvalidNumberOfDigitsException
 
 def analyse(a, b):
     """Analyses the input and compare it with the solution 
@@ -21,6 +22,9 @@ def analyse(a, b):
 
     a = list(a)
     b = list(b)
+
+    if len(a) != len(b):
+        raise InvalidNumberOfDigitsException(len(b))
 
     correct = 0
     misplaced = 0
