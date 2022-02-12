@@ -1,17 +1,17 @@
 import random
 from exceptions import InvalidNumberOfDigitsException
 
-def analyse(a, b):
+def analyse(guess, secret):
     """Analyses the input and compare it with the solution 
     and returns a clue in form of tuple which indicating
     how many digits are correctly guessed and how many of them
     are also in correct positions.
 
-    :param a: the number to be compared with the lock code, e.g: "555" (required)
-    :type a: str
+    :param guess: the number to be compared with the lock code, e.g: "555" (required)
+    :type guess: str
 
-    :param b: the reference lock code, e.g: "345" (required)
-    :type b: str
+    :param secret: the secret lock code, e.g: "345" (required)
+    :type secret: str
 
     returns:
         a tuple (correct, misplaced):
@@ -20,19 +20,19 @@ def analyse(a, b):
     
     """
 
-    a = list(a)
-    b = list(b)
+    guess = list(guess)
+    secret = list(secret)
 
-    if len(a) != len(b):
-        raise InvalidNumberOfDigitsException(len(b))
+    if len(guess) != len(secret):
+        raise InvalidNumberOfDigitsException(len(secret))
 
     correct = 0
     misplaced = 0
 
-    remained_a = a.copy()
-    remained_b = b.copy()
+    remained_a = guess.copy()
+    remained_b = secret.copy()
 
-    for x, y in zip(a,b):
+    for x, y in zip(guess,secret):
         if x == y:
             correct += 1
             remained_a.remove(x)
@@ -46,9 +46,9 @@ def analyse(a, b):
     return (correct, misplaced)
 
 
-def generate_code():
-    solution = random.randint(0,999)
-    return f'{solution:03d}'
+def generate_secret():
+    secret = random.randint(0,999)
+    return f'{secret:03d}'
 
 
 def human_readable_clue(analyse_result):
