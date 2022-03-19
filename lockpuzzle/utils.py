@@ -46,9 +46,9 @@ def analyse(guess, secret):
     return (correct, misplaced)
 
 
-def generate_secret():
-    secret = random.randint(0,999)
-    return f'{secret:03d}'
+def generate_secret(n_digits):
+    secret = random.randint(0,10**n_digits-1) # 999 for n_digits = 3
+    return f'{secret:{n_digits}d}'
 
 
 def human_readable_clue(analyse_result):

@@ -1,8 +1,9 @@
 from utils import analyse, human_readable_clue, generate_secret
 
 
-def game():
-    secret = generate_secret()
+def game(n_digits=3):
+    secret = generate_secret(n_digits)
+    print(f'Secret code generated : {"*"*n_digits}')
     max_attempt = 7
     n_attempt = 1
 
@@ -15,11 +16,13 @@ def game():
             print(e.message)
             continue
 
-        if (correct, misplaced) == (3, 0):
+        if guess == secret:
             print("Congrats! you have opened the box ^--^")
             break
         else:
             clue_message = human_readable_clue((correct, misplaced))
+            if n_digits != 3: 
+                clue_message = (correct, misplaced) # TODO: temporary, fix it later
             print(clue_message)
         
         n_attempt += 1
@@ -41,8 +44,15 @@ if __name__ == "__main__":
     print(f"{'-'*100}")
 
     play_game = True
+    n_digits = input("How many digits should the lock have? ")
+    n_digits = int(n_digits)
+
     while play_game:
-        game()
+        game(n_digits)
         response = input("Play again? [Y/n] ")
+
         if response.lower() != 'y':
             play_game = False
+        else:
+            n_digits = input("How many digits should the lock have? ")
+            n_digits = int(n_digits)
