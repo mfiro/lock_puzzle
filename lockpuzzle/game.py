@@ -21,14 +21,12 @@ def game(n_digits=3):
             break
         else:
             clue_message = human_readable_clue((correct, misplaced))
-            if n_digits != 3: 
-                clue_message = (correct, misplaced) # TODO: temporary, fix it later
             print(clue_message)
         
         n_attempt += 1
 
     else:
-        print(f"Failed! -> The lock code was {secret}")
+        print(f"Failed! -> Secret code was {secret}")
 
 
 if __name__ == "__main__":
